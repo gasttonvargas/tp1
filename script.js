@@ -1,103 +1,242 @@
-// 1.- Escribe un programa de una sola línea que haga que aparezca en la pantalla un alert que diga “un mensaje”.
-alert("un mensaje");
+// 1- Escribir un programa que solicite la edad y si es mayor de 18 años mostrar un mensaje que ya puede conducir, si la edad ingresada no es un número válido indicarlo en un mensaje.
+let edad = parseInt(prompt("Ingresa tu edad: "));
 
-//2.- Escribe un programa de una sola línea que escriba en la pantalla un texto que diga «Hello World» (document.write).
-document.write("Hello World");
+if (edad >=21) {
+    alert("Ya puedes conducir, pero tenes vencido el carnet")
+ } else {
+    Number.isNaN(edad);
+ }
 
-//3.- Escribe un programa de una sola línea que escriba en la pantalla el resultado de sumar 3 + 5.
-document.write("El resultado es " + (3 + 5));
+//2- Escribir un programa que solicite una nota (número) de 0  a 10. Luego mostrar la calificación en un alert según los siguientes rangos de nota:
 
-//4.- Escribe un programa de dos líneas que pida el nombre del usuario con un prompt y escriba un texto que diga «Hola nombreUsuario»
-let nombreUsuario = prompt("hola nombre de usuario ");
-console.log("hola coder ")
+let nota = prompt("Ingresa una nota (del 0 al 10):");
+let mensaje;
 
-//5.-Escribe un programa de tres líneas que pida un número, pida otro número y escriba el resultado de sumar estos dos números.
-let numero1 = 6;
-let numero2 = 10;
-let suma;
-
-suma = numero1 + numero2
-console.log(suma)
-console.log("El resultado de la suma es" + suma);
-
-//6.-Escribe un programa que pida dos números y escriba en la pantalla cual es el mayor.
-var num1 = prompt ("Ingresa el primer número");
-var num2 = prompt ("Ingresa el segundo número");
-
-if ((num1 > num2)) {
-
-    console.log(num1 + " es el número más grande");
+if (isNaN(nota)) {
+  mensaje = "Introduce un número válido";
 } else {
-    console.log(num2+ "es el número más grande");
+  nota = parseFloat(nota);
+
+  if (nota >= 0 && nota <= 2) {
+    mensaje = "Muy deficiente";
+  } else if (nota >= 3 && nota <= 4) {
+    mensaje = "Insuficiente";
+  } else if (nota >= 5 && nota <= 6) {
+    mensaje = "Suficiente";
+  } else if (nota === 7) {
+    mensaje = "Bien";
+  } else if (nota >= 8 && nota <= 9) {
+    mensaje = "Notable";
+  } else if (nota === 10) {
+    mensaje = "Sobresaliente";
+  } else {
+    mensaje = "Ingrese un número que sea menor a 10";
+  }
 }
 
-//7.- Escribe un programa que pida 3 números y escriba en la pantalla el mayor de los tres.
-var num1,num2,num3,mayor,t;
-num1 = parseInt(prompt("primer número"));
-num2 = parseInt(prompt("segundo número"));
-num3 = parseInt(prompt("tercer número"));
+alert(mensaje);
 
-if (num1 > num2) {
-    t = num1;
 
-} else{
-    t = num2;
+//3- Realiza un script que pida cadenas de texto  hasta que se pulse “cancelar”
+let cadenas = [];
+
+while (true) {
+  let texto = prompt("Ingresa una cadena de texto:");
+
+  if (texto === null) {
+    break;
+  }
+
+  cadenas.push(texto);
 }
 
-if (t>num3){
-    mayor=t;
+let resultado = cadenas.join("-");
+console.log("Texto escrito: " + resultado);
 
-} else{
-   mayor=num3;
+//4 Realiza un script que pida números hasta que se pulse “cancelar”. Si no es un número deberá indicarse con un «alert» y seguir pidiendo números. Al salir con “cancelar” deberá indicarse la suma total de los números introducidos.
+let suma = 0;
+
+while (true) {
+  let input = prompt("Ingresa un número:");
+
+  if (input === null) {
+    break;
+  }
+  let numero = parsefloat(input);
+  if (isNaN(numero)) {
+    alert("¡Debe ingresar un número válido!");
+  }
+  suma += numero;
+}
+alert("La suma total de los números es: " + suma);
+
+//5- Realizar una página con un script que calcule el valor de la letra de un número de DNI (Documento nacional de identidad).
+
+while (true) {
+  let dni = prompt("Ingresa tu número de DNI:");
+
+  if (dni === null) {
+    break;
+  }
+
+  if (isNaN(dni)) {
+    alert("No es un número válido");
+  }
+
+  let numeroDNI = parseInt(dni);
+  let letrasDNI = "TRWAGMYFPDXBNJZSQVHLCKE";
+  let indiceLetra = numeroDNI % 23;
+  let letra = letrasDNI.charAt(indiceLetra);
+
+  alert("La letra del número de DNI " + numeroDNI + " es: " + letra);
+}
+     
+
+//6- Realiza un script que escriba una pirámide del 1 al 30 de la siguiente forma :
+for (let i = 1; i < 30; i++) {
+  let line = i + "";
+  console.log(line.repeat(i));
 }
 
-document.write("El " + mayor + " es el número más grande");
+//7.-Haz un script que escriba una pirámide inversa de los números del 1 al número que indique el usuario (no mayor de 50)  de la siguiente forma : (suponiendo que indica 30).*
+let num1 = parseInt(prompt("Ingresa un número (no mayor de 50): "));
 
-//8.-Escribe un programa que pida un número y diga si es divisible por 2
-var numero3 = prompt("Ingresa un número");
-
-if (numero3 % 2 === 0) {
-    document.write("El " + numero + " es divisible por 2.");
+if (num1 <= 50) {
+  for (let i = 1; i >= 0; i--) {
+    console.log(i.toString().repeat(i));
+  }
 } else {
-    document.write("El " + numero + " no es divisible por 2.");
+  console.log("error");
 }
 
-//9.- Escribe un programa que pida una frase y escriba las vocales que aparecen
-let str = "buenas tardes gente!";
 
-for (let i = 0; i < str.length; i++) {
-    let vocal = str.charAt(i);
+//8- Crea script para generar pirámide siguiente con los números del 1 al número que indique el usuario (no mayor de 50) 
+let num = parseInt(prompt("Ingresa un número (no mayor de 50):"));
 
-    if (vocal === "a" || vocal === "e" || vocal === "i" || vocal === "o" || vocal === "u") {
-        console.log(vocal);
+if (num <= 50) {
+  let piramide = "";
+  for (let i = 1; i <= num; i++) {
+    for (let j = 1; j <= i; j++) {
+      piramide += j;
     }
-}
-//10.- Escribe un programa que pida un número y nos diga si es divisible por 2, 3, 5 o 7 (sólo hay que comprobar si lo es por uno de los cuatro)
-var num1 = prompt("Escribe un número");
-
-if (n1 % 2 === 0 || n1 % 3 === 0 || n1 % 5 === 0 || n1 % 7 === 0) {
-    document.write("Es divisible por 2, 3, 5 o 7");
+    piramide += "\n";
+  }
+  console.log(piramide);
 } else {
-    document.write("No es divisible ni por 2, ni por 3, ni por 5, ni por 7");
+  console.log("El número ingresado es mayor a 50. Por favor, ingresa un número válido.");
+}
+//9- Crea un script que escriba los números del 1 al 500, que indique cuáles son múltiplos de 4 y de 9 y que cada 5 líneas muestre una línea horizontal. Por ejemplo :
+for (let i = 1; i <= 500; i++) {
+  let msj = i.toString();
+
+  if (i % 4 === 0) {
+    msj += " (Múltiplo de 4)";
+  } else if (i % 9 === 0) {
+    msj += " (Múltiplo de 9)";
+  }
+
+  console.log(msj);
+
+  if (i % 5 === 0) {
+    console.log("—————————————————————");
+  }
+}
+//10- Realiza un script que pida número de filas y columnas y escriba una tabla.
+let filas = parseInt(prompt("Ingresa el número de filas:"));
+let columnas = parseInt(prompt("Ingresa el número de columnas:"));
+
+let numero = filas * columnas;
+
+document.write("<table>");
+
+for (let i = 1; i <= filas; i++) {
+  document.write("<tr>");
+  for (let j = 1; j <= columnas; j++) {
+    document.write("<td>" + numero + "</td>");
+    numero--;
+  }
+  document.write("</tr>");
 }
 
-//Añadir al ejercicio anterior que nos diga por cuál de los cuatro es divisible (hay que decir todos por los que es divisible)
-var num1 = prompt("Escribe un número");
-var num2 = prompt("Escribe otro número");
+document.write("</table>");
 
-if (numero1 % 2 === 0 || numero1 % 3 === 0 || numero1 % 5 === 0 || numero1 % 7 === 0) {
-    if (numero1 % 2 === 0) {
-        document.write("El " + numero1 + " es divisible por 2. ");
-    }
-    if (numero1 % 3 === 0) {
-        document.write("El " + numero1 + " es divisible por 3. ");
-    }
-    if (numero1 % 5 === 0) {
-        document.write("El " + numero1 + " es divisible por 5. ");
-    }
-    if (numero1 % 7 === 0) {
-        document.write("El " + numero1 + " es divisible por 7. ");
-    }
+//11- Realiza un script que pida por teclado 3 edades y 3 nombres e indique el nombre del mayor. *
+let edades = [];
+let nombres = [];
+
+for (let i = 1; i <= 3; i++) {
+  let nombre = prompt("Ingresa el nombre " + i + ":");
+  let edad = parseInt(prompt("Ingresa la edad de " + nombre + ":"));
+
+  nombres.push(nombre);
+  edades.push(edad);
+}
+
+let indiceMayorEdad = edades.indexOf(Math.max(...edades));
+let nombreMayorEdad = nombres[indiceMayorEdad];
+
+console.log("La persona de mayor edad es: " + nombreMayorEdad);
+
+//12- Realiza un script que genere un número aleatorio entre 1 y 99
+let numeroAleatorio = Math.floor(Math.random() * 99) + 1;
+console.log(numeroAleatorio);
+
+//13- Realiza un script que pida un texto y lo muestre en mayúsculas.
+let texto = prompt("Ingresa un texto:");
+console.log(texto.toUpperCase());
+
+//14- Realiza un script que pida una cadena de texto y lo muestre poniendo el signo*/
+let texto = prompt("Ingresa una cadena de texto:");
+let resultado = "";
+
+for (let i = 0; i < texto.length; i++) {
+  resultado += texto[i];
+  
+  if (i !== texto.length - 1) {
+    resultado += "-";
+  }
+}
+
+console.log(resultado);
+
+//15- Realiza un script que cuente el número de vocales que tiene un texto.
+let texto = prompt("Contador de vocales:");
+let contador = 0;
+
+for (let i = 0; i < texto.length; i++) {
+  let caracter = texto[i].toLowerCase();
+  if (caracter === 'a' || caracter === 'e' || caracter === 'i' || caracter === 'o' || caracter === 'u') {
+    contador++;
+  }
+}
+
+console.log("El texto tiene " + contador + " vocales.");
+
+//16.-Realiza un script que pida una cadena de texto y la devuelva al revés. Es decir, si tecleo “hola que tal” deberá mostrar “lat euq aloh”.
+let texto = prompt("Ingresa una cadena de texto:");
+let textoReverso = "";
+
+for (let i = texto.length - 1; i >= 0; i--) {
+  textoReverso += texto[i];
+}
+
+console.log("Texto original: " + texto);
+console.log("Texto al revés: " + textoReverso);
+*/
+//17.-
+let texto = prompt("Ingresa un texto con vocales:");
+let posicion = -1;
+
+for (let i = 0; i < texto.length; i++) {
+  let caracter = texto[i].toLowerCase();
+  if (caracter === 'a' || caracter === 'e' || caracter === 'i' || caracter === 'o' || caracter === 'u') {
+    posicion = i + 1;
+    break;
+  }
+}
+
+if (posicion !== -1) {
+  console.log("La primera vocal está en la posición " + posicion);
 } else {
-    document.write("El " + numero1 + " no es divisible ni por 2, ni por 3, ni por 5, ni por 7. ");
+  console.log("No se encontró ninguna vocal en el texto.");
 }
